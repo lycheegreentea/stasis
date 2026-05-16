@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stasis</title>
+  </head>
+  <body class="w-full h-screen flex flex-col items-center justify-center p-4">
+    <h1 id="status" class="text-5xl font-bold uppercase">Scan to Proceed</h1>
+    <div class="mt-8 h-18 w-140 max-w-full border-2"></div>
+    <input id="card-input" type="text" autocomplete="off"
+      style="position:fixed;opacity:0;pointer-events:none;width:1px;height:1px;" />
+    <div class="absolute bottom-4 right-4 border-2 p-2 font-bold hover:bg-gray-200 cursor-pointer" id="give-up">
+      <p class="text-sm">Give up.</p>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
