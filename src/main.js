@@ -30,27 +30,24 @@ input.addEventListener('keydown', (e) => {
   const cardData = input.value.trim()
   input.value = ''
 
-  if (!cardData){
-    if(progressBar){
-      progressBar.style.width = '0%'
-    }
-      return
-    }
+  if (!cardData) {
+    if (progressBar) progressBar.style.width = '0%'
+    return
+  }
 
+  // Save data to your overall log array
   const swipes = JSON.parse(localStorage.getItem('swipes') ?? '[]')
   swipes.push({ data: cardData, ts: new Date().toISOString() })
   localStorage.setItem('swipes', JSON.stringify(swipes))
-  status.textContent = 'yay'
-  if(progressBar){
-    progressBar.style.width = '100%'
-  }
-  setTimeout(() => {
-    if (progressBar){
-      progressBar.style.transition = 'none'
-      progressBar.style.width = '0%'
-      progressBar.offsetHeight
-      progressBar.style.transition = ''
-    }
-    status.textContent = 'Scan to Proceed'}, 2000)
   
+  if (progressBar) progressBar.style.width = '100%'
+  status.textContent = 'yay'
+
+  // NEW: Save the specific numbers temporarily for the next page to read
+  sessionStorage.setItem('latest_swipe', cardData)
+
+  // REDIRECT: Wait a moment for the 100% animation, then leave the page
+  setTimeout(() => {
+    window.location.href = 'success.html'
+  }, 1000)
 })
