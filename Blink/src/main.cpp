@@ -53,7 +53,7 @@ void loop() {
     if(digitalRead(leds[i])==HIGH && currentMillis-ledOnTime[i] >=timeout){
       digitalWrite(leds[i], LOW);
       score--;
-      Serial.print("Missed, Score: "+score);
+      Serial.print("Missed, Score: ");
       Serial.println(score);
     }
   }
@@ -69,4 +69,3 @@ void loop() {
   } 
   }
 }
-
