@@ -16,7 +16,6 @@ int timeout = 3000;
 long gameStart = 0;
 bool gameStarted = false;
 
-
 unsigned long ran_go = 0;
 unsigned long previousMillis = 0;
 unsigned long lastPress[3] = {0,0,0};
@@ -54,8 +53,7 @@ void setup(){
   Serial.begin(115200);
   delay(1000);
 
-  webSocket.begin();
-  webSocket.onEvent(webSocketEvent);
+  
   for(int i=0; i<3; i++){
     pinMode(leds[i], OUTPUT);
     pinMode(buttons[i], INPUT_PULLUP);
@@ -66,7 +64,9 @@ void setup(){
     delay(500);
     Serial.print(".");
   }
-Serial.println(WiFi.localIP());
+  webSocket.begin();
+  webSocket.onEvent(webSocketEvent);
+  Serial.println(WiFi.localIP());
 }
 
 void loop() {
