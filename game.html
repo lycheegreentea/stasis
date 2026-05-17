@@ -47,6 +47,14 @@
     ws.onmessage = (e) => {
         if (e.data === "GAME_OVER") alert("Game Over!");
     };
+    ws.onmessage = (e) => {
+        if(e.data === "SPEED_UP") alert("speed");
+    }
+    ws.onmessage = (e) => {
+        if(e.data ==="START_READING") alert ("speed");
+        
+    }
+    ws.onmessage
     function startGame(){
         if(ws.readyState ===WebSocket.OPEN){
             ws.send("START_GAME");
@@ -54,7 +62,7 @@
             console.warn("websocket not ready")
         }
     }
-
+    
 </script>
 </body>
 </html>
