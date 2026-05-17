@@ -48,6 +48,6 @@ input.addEventListener('keydown', (e) => {
 
   // REDIRECT: Wait a moment for the 100% animation, then leave the page
   setTimeout(() => {
-    window.location.href = 'success.html'
+    window.location.href = 'game.html'
   }, 1000)
 })
