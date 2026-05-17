@@ -27,6 +27,7 @@
     remainingDigits.sort(() => Math.random() - 0.5);
     let displayedText = initialDigit;
     displayElement.textContent = displayedText;
+    
     const intervalId = setInterval(() => {
         if (remainingDigits.length > 0) {
         const nextDigit = remainingDigits.shift();
@@ -36,7 +37,7 @@
         clearInterval(intervalId);
         }
     }, 3000);
-
+        startGame();
     } else {
         displayElement.textContent = "No Valid Scan Data Found";
     }
