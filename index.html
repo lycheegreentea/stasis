@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stasis</title>
   </head>
-  <body class="w-full h-screen flex flex-col items-center justify-center p-4">
+  <body class="w-full h-screen bg-white flex flex-col items-center justify-center p-4">
+    <img src="walrus-removebg-preview.png" class="h-75 w-75 object-contain" alt="Walrus" />
+    
     <h1 id="status" class="text-5xl font-bold uppercase">Scan to Proceed</h1>
-    <div class="mt-8 h-18 w-140 max-w-full border-2"></div>
-    <input id="card-input" type="text" autocomplete="off"
-      style="position:fixed;opacity:0;pointer-events:none;width:1px;height:1px;" />
+    
+    <div class="mt-8 h-12 w-140 max-w-full border-2 bg-black/20 relative rounded overflow-hidden">
+      <input id="card-input" type="text" autocomplete="off"
+        style="position:fixed; opacity:0; pointer-events:none; width:1px; height:1px;" />
+      <div id="progress-bar" class="h-full w-0 bg-white transition-all duration-75"></div>
+    </div>
+    
     <div class="absolute bottom-4 right-4 border-2 p-2 font-bold hover:bg-gray-200 cursor-pointer" id="give-up">
       <p class="text-sm">Give up.</p>
     </div>
+    
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
