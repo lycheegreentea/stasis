@@ -1,5 +1,10 @@
 #include <Arduino.h>
 #include <WebSocketsServer.h>
+#include <WiFi.h>
+
+const char* ssid = "AH - Guest";
+const char* password = "NoTimidSouls";
+
 
 WebSocketsServer webSocket = WebSocketsServer(81);
 
@@ -56,7 +61,12 @@ void setup(){
     pinMode(buttons[i], INPUT_PULLUP);
   }
   randomSeed(analogRead(0));
-
+  WiFi.begin(ssid, password);
+  while(WiFi.status() !=WL_CONNECTED){
+    delay(500);
+    Serial.print(".");
+  }
+Serial.println(WiFi.localIP());
 }
 
 void loop() {
