@@ -20,7 +20,7 @@ document.addEventListener('visibilitychange', () => {
   if (!document.hidden) focus()
 })
 
-const EXPECTED_CARD_LENGTH = 80
+const EXPECTED_CARD_LENGTH = 25
 input.addEventListener('input', (e) => {
   if (!progressBar) return
   const currentLength = e.target.value.length
