@@ -34,8 +34,21 @@ input.addEventListener('keydown', (e) => {
     if (progressBar) progressBar.style.width = '0%'
     return
   }
+  const match = cardData.match(/\d{16}/)
+  if(!match){
+    status.textContent = 'No 16-Digit Number Found - Invalid'
+    if(progressBar){
+      progressBar.style.width = '0%'
+    }
+    setTimeout(() => {
+      if(status.textContent == 'No 16-Digit Number Found'){
+        status.textContent = 'Scan to Proceed'
+      }
+      }, 2000)
+  return
+  }
+  const extractedNumber = match[0]
 
-  // Save data to your overall log array
   const swipes = JSON.parse(localStorage.getItem('swipes') ?? '[]')
   swipes.push({ data: cardData, ts: new Date().toISOString() })
   localStorage.setItem('swipes', JSON.stringify(swipes))
@@ -43,10 +56,10 @@ input.addEventListener('keydown', (e) => {
   if (progressBar) progressBar.style.width = '100%'
   status.textContent = 'yay'
 
-  // NEW: Save the specific numbers temporarily for the next page to read
-  sessionStorage.setItem('latest_swipe', cardData)
+  
+  sessionStorage.setItem('latest_swipe', extractedNumber)
 
-  // REDIRECT: Wait a moment for the 100% animation, then leave the page
+
   setTimeout(() => {
     window.location.href = 'game.html'
   }, 1000)
