@@ -39,6 +39,15 @@
     } else {
         displayElement.textContent = "No Valid Scan Data Found";
     }
+
+    const ws = new WebSocket("ws://192.168.1.100:18");
+    
+    function startGame(){
+        if(ws.readyState ===WebSocket.OPEN){
+            ws.send("START_GAME");
+        }
+    }
+
 </script>
 </body>
 </html>
